@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marksheet Desk – Student Registration & Results</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <h1>Marksheet Desk</h1>
+  <p>Register a student, enter marks, and get the result instantly.</p>
+</header>
+
+<main>
+  <section class="card" aria-labelledby="regTitle">
+    <h2 id="regTitle">Register student</h2>
+    <form id="resultForm" novalidate>
+      <div class="grid3">
+        <div class="field">
+          <label for="studentName">Full name</label>
+          <input type="text" id="studentName" autocomplete="off">
+          <small class="err" id="err-studentName"></small>
+        </div>
+        <div class="field">
+          <label for="rollNumber">Roll number</label>
+          <input type="text" id="rollNumber" autocomplete="off">
+          <small class="err" id="err-rollNumber"></small>
+        </div>
+        <div class="field">
+          <label for="course">Course</label>
+          <input type="text" id="course" autocomplete="off">
+          <small class="err" id="err-course"></small>
+        </div>
+      </div>
+
+      <h3>Subject marks <span class="hint">out of 100 · pass mark 35</span></h3>
+      <div id="subjects"></div>
+      <button type="button" class="ghost" id="addSubject">+ Add subject</button>
+      <small class="err" id="err-subjects"></small>
+
+      <div class="actions">
+        <button type="submit">Generate result</button>
+        <button type="reset" class="ghost" id="resetBtn">Clear form</button>
+      </div>
+    </form>
+  </section>
+
+  <section id="report" class="card report" aria-live="polite" hidden>
+    <div class="report-head">
+      <div>
+        <h2>Result report</h2>
+        <p><b id="showName"></b> · Roll <span id="showRoll"></span> · <span id="showCourse"></span></p>
+      </div>
+      <div id="stamp" class="stamp"></div>
+    </div>
+    <table>
+      <thead><tr><th>Subject</th><th>Marks</th><th>Grade</th><th>Status</th></tr></thead>
+      <tbody id="showSubjects"></tbody>
+    </table>
+    <div class="summary">
+      <div><span>Total</span><strong id="showTotal"></strong></div>
+      <div><span>Percentage</span><strong id="showPercentage"></strong></div>
+      <div><span>Overall grade</span><strong id="showGrade"></strong></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="list-head">
+      <h2>Saved students</h2>
+      <div class="list-tools">
+        <input type="search" id="search" placeholder="Search name or roll no." aria-label="Search saved students">
+        <button type="button" class="ghost" id="exportBtn">Export JSON</button>
+        <button type="button" class="danger" id="clearBtn">Delete all</button>
+      </div>
+    </div>
+    <p id="stats" class="stats"></p>
+    <div id="savedStudents"></div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
